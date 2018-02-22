@@ -1,9 +1,9 @@
 export const urlConstants = {
     getBaseurl: () => {
-        if (window.location.hostname === "localhost") {
-            return 'http://192.168.9.217/screenscrapmanwebapp/development/ssmapi/public/';
+        if (window.location.hostname === "localhost") { // update you base API URL here
+            return '/development';
         }else{
-            return 'http://192.168.9.217/screenscrapmanwebapp/production/ssmapi/public/';
+            return '/live';
         }
     },
     // Login URL

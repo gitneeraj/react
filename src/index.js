@@ -4,8 +4,9 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { Provider } from 'react-redux';
+
 import { rootReducers } from './_reducers/index';
-import { Routes } from './_routes';
+import App from './App';
 
 import './index.css'
 import './css/main.min.css'
@@ -20,7 +21,5 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <Routes />
-    </Provider>, 
-    document.getElementById('root')
-);
+        <App />
+    </Provider>, document.getElementById('root'));

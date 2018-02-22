@@ -8,4 +8,6 @@ export const userConstants = {
     GETALL_REQUEST: 'USERS_GETALL_REQUEST',
     GETALL_SUCCESS: 'USERS_GETALL_SUCCESS',
     GETALL_FAILURE: 'USERS_GETALL_FAILURE',
+
+    LOGIN_SUCCESS_MESSAGE: 'You have been logged in successfully!',
 };

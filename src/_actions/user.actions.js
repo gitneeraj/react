@@ -1,5 +1,6 @@
 import { userConstants } from '../constants';
 import { userService } from '../_services';
+import { toastActions } from './';
 import { history } from '../_helpers';
 
 export const userActions = {
@@ -15,9 +16,13 @@ function login(data) {
                 response => {                     
                     if(response.status === 'fail'){
                         dispatch(failure(response));
+                        dispatch(toastActions.clear());
+                        dispatch(toastActions.error(response.message));
                     }else{
                         dispatch(success(response));
                         history.push('/dashboard');
+                        // dispatch(toastActions.clear());
+                        dispatch(toastActions.success(userConstants.LOGIN_SUCCESS_MESSAGE));
                     }                    
                 },
                 error => {

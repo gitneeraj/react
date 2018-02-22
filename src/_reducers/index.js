@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import { login } from "../_reducers/login";
+import { toast } from "../_reducers/toast.reducer";
+import { login } from "../_reducers/login.reducer";
 
 export const rootReducers = combineReducers({
+    toast,
     login
 });
