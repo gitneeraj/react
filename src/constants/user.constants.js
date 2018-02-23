@@ -10,4 +10,5 @@ export const userConstants = {
     GETALL_FAILURE: 'USERS_GETALL_FAILURE',
 
     LOGIN_SUCCESS_MESSAGE: 'You have been logged in successfully!',
+    LOGOUT_SUCCESS_MESSAGE: 'You have been logged out!',
 };

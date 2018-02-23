@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
 
 // import { toastActions } from './_actions';
 import { history } from './_helpers';
 import { Routes } from './_routes';
+import  Toaster  from './components/Toaster/Toaster';
 
 class App extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class App extends Component {
                 {/* {toast.message &&
                     <div className={`alert ${toast.type}`}>{toast.message}</div>
                 } */}
-                <ToastContainer/>
+                <Toaster/>
                 <Routes />
             </div>
         );

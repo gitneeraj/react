@@ -4,12 +4,12 @@ export function toast(state = {}, action) {
   switch (action.type) {
     case toastConstants.SUCCESS:
       return {
-        type: 'toast-success',
+        type: toastConstants.SUCCESS,
         message: action.message
       };
     case toastConstants.ERROR:
       return {
-        type: 'toast-danger',
+        type: toastConstants.ERROR,
         message: action.message
       };
     case toastConstants.CLEAR:

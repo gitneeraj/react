@@ -16,12 +16,10 @@ function login(data) {
                 response => {                     
                     if(response.status === 'fail'){
                         dispatch(failure(response));
-                        dispatch(toastActions.clear());
                         dispatch(toastActions.error(response.message));
                     }else{
                         dispatch(success(response));
                         history.push('/dashboard');
-                        // dispatch(toastActions.clear());
                         dispatch(toastActions.success(userConstants.LOGIN_SUCCESS_MESSAGE));
                     }                    
                 },
@@ -37,6 +35,9 @@ function login(data) {
 }
 
 function logout() {
-    userService.logout();
-    return { type: userConstants.LOGOUT };
+    return dispatch => {
+        userService.logout();
+        dispatch(toastActions.success(userConstants.LOGOUT_SUCCESS_MESSAGE));
+        return { type: userConstants.LOGOUT };
+    };
 }

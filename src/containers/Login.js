@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { userActions } from "../_actions";
 
@@ -16,7 +14,6 @@ class Login extends Component {
                 email: '',
                 password: ''
             },
-			redirect: false,
 			isLoading: false
         };
 
@@ -38,12 +35,6 @@ class Login extends Component {
 			...state,
 			isLoading: props.login.loading
 		}));
-		if(props.login.data){
-			const { data } = props.login;
-			if(data.status === 'fail'){
-				toast.error(data.message);
-			}
-		}
 	}
 
 	onSubmit(event){
@@ -57,12 +48,8 @@ class Login extends Component {
 	render() {
 		const {user, isLoading } = this.state;
 
-		if(this.state.redirect)
-			return <Redirect to={'/dashboard'} />
-
-		return (			
+        return (			
 			<div className="login-box">
-				<ToastContainer />
 				<div className="login-logo">
 					<a><b>Admin</b>CP</a>
 				</div>
