@@ -18,9 +18,9 @@ class Dashboard extends Component {
                 <div className="content-wrapper" style={{minHeight: '690px'}}>
                     <section className="content">
                         <Route path={`${this.props.match.url}`} exact component={Home} />
-                        <Route path={`${this.props.match.url}/jobs`} component={Jobs} />
-                        <Route path={`${this.props.match.url}/source`} component={Source} />
-                        <Route path={`${this.props.match.url}/companies`} component={Users} />
+                        <Route path={`${this.props.match.url}jobs`} component={Jobs} />
+                        <Route path={`${this.props.match.url}source`} component={Source} />
+                        <Route path={`${this.props.match.url}companies`} component={Users} />
                     </section>   
                 </div>        
 

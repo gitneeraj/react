@@ -18,17 +18,17 @@ export default class Sidebar extends Component {
                 <ul className="sidebar-menu" data-widget="tree">
                     <li className="header">MAIN NAVIGATION</li>
                     <li className="treeview menu-open">
-                        <NavLink to="/dashboard" exact activeClassName="active">
+                        <NavLink to="/" exact activeClassName="active">
                             <i className="fa fa-dashboard"></i> <span>Dashboard</span>
                         </NavLink>
                     </li>
                     <li className="treeview">
-                        <NavLink to="/dashboard/jobs" exact activeClassName="active">
+                        <NavLink to="/jobs" exact activeClassName="active">
                             <i className="fa fa-briefcase"></i> <span>Job Source</span>
                         </NavLink>
                     </li>
                     <li className="treeview">
-                        <NavLink to="/dashboard/companies" exact activeClassName="active">
+                        <NavLink to="/companies" exact activeClassName="active">
                             <i className="fa fa-adn"></i> <span>Companies</span>
                         </NavLink>
                     </li>

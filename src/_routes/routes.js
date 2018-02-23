@@ -14,7 +14,7 @@ export const Routes = () => {
     <Router history={history}>
         <Switch>			
             <Route exact path="/login" component={Login} />
-            <PrivateRoute path="/dashboard" component={Dashboard} />         
+            <PrivateRoute path="/" component={Dashboard} />         
             <Route path="*" component={Login} />
         </Switch>
     </Router>);

@@ -65,7 +65,8 @@ class Login extends Component {
 								name="email" 
 								value={user.email}
 								onChange={e => this.onChange({email: e.target.value})} 
-								required 
+                                required
+                                title="Please enter a valid email address"
 							/>
 							<span className="glyphicon glyphicon-envelope form-control-feedback"></span>
 						</div>
@@ -83,7 +84,7 @@ class Login extends Component {
 						</div>
 						<div className="row">
 							<div className="col-xs-4 text-right">
-								<button type="submit" className="btn btn-primary btn-block btn-flat">								
+								<button disabled={isLoading} type="submit" className="btn btn-primary btn-block btn-flat">								
 									{ isLoading &&
 										<i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 									}

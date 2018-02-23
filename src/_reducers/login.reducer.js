@@ -1,4 +1,4 @@
-import { userConstants } from '../constants';
+import { userConstants } from '../_constants';
 
 const initialState = {
     loading: false,

@@ -1,5 +1,5 @@
 // import { authHeader } from '../_helpers';
-import { urlConstants } from '../constants';
+import { urlConstants } from '../_constants';
 
 export const userService = {
     login,

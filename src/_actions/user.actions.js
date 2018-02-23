@@ -1,4 +1,4 @@
-import { userConstants } from '../constants';
+import { userConstants } from '../_constants';
 import { userService } from '../_services';
 import { toastActions } from './';
 import { history } from '../_helpers';
@@ -19,7 +19,7 @@ function login(data) {
                         dispatch(toastActions.error(response.message));
                     }else{
                         dispatch(success(response));
-                        history.push('/dashboard');
+                        history.push('/');
                         dispatch(toastActions.success(userConstants.LOGIN_SUCCESS_MESSAGE));
                     }                    
                 },

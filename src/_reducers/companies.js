@@ -1,4 +1,4 @@
-// import { GET_COMPANIES } from '../constants/constants';
+// import { GET_COMPANIES } from '../_constants/_constants';
 
 // export const companies = (state = [], { type, payload }) => {
 //     switch(type){

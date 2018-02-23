@@ -1,4 +1,4 @@
-import { toastConstants } from '../constants';
+import { toastConstants } from '../_constants';
 
 export function toast(state = {}, action) {
   switch (action.type) {
