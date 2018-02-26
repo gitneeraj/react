@@ -1,5 +1,4 @@
 import { toastConstants } from '../_constants';
-// import { toast } from "react-toastify";
 
 export const toastActions = {
     success,

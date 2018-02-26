@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default class Sidebar extends Component {
+class Sidebar extends Component {
     render(){
         return (
             <aside className="main-sidebar">
@@ -38,3 +38,5 @@ export default class Sidebar extends Component {
         );
     }
 }
+
+export default Sidebar;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Source extends Component{
+class Sourcepage extends Component{
     render(){
         return (
             <div className="source">
@@ -10,4 +10,4 @@ class Source extends Component{
     }
 }
 
-export default Source;
+export { Sourcepage as Source } ;

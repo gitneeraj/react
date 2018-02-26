@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Home from '../components/Home/Home';
-import Sidebar from '../containers/Sidebar'
-import Topnav from '../containers/Topnav'
-import Footer from '../containers/Footer'
-import Jobs from '../components/Jobs/Jobs'
-import Source from '../components/Source/Source'
-import Users from '../components/Users/Users'
 import { Route } from 'react-router-dom';
+
+import { Home, Jobs, Source, Users, Company } from '../components';
+import Sidebar from '../containers/Sidebar';
+import Topnav from '../containers/Topnav';
+import Footer from '../containers/Footer';
+// import { Sidebar } from './';
 
 class Dashboard extends Component {
     render() {
@@ -20,7 +19,8 @@ class Dashboard extends Component {
                         <Route path={`${this.props.match.url}`} exact component={Home} />
                         <Route path={`${this.props.match.url}jobs`} component={Jobs} />
                         <Route path={`${this.props.match.url}source`} component={Source} />
-                        <Route path={`${this.props.match.url}companies`} component={Users} />
+                        <Route path={`${this.props.match.url}companies`} component={Company} />
+                        <Route path={`${this.props.match.url}users`} component={Users} />
                     </section>   
                 </div>        
 

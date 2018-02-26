@@ -1,25 +1,25 @@
-import { userConstants } from '../_constants';
+import { companyConstants } from '../_constants';
 
 const initialState = {
     loading: false,
     error: null,
-    data: (localStorage.getItem("authenticated"))? JSON.parse(localStorage.getItem("authenticated")) : null
+    data: null
 }
 
-export const login = (state = initialState, action) => {
+export const company = (state = initialState, action) => {
     switch(action.type){
-        case userConstants.LOGIN_REQUEST:
+        case companyConstants.LIST_REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case userConstants.LOGIN_SUCCESS: 
+        case companyConstants.LIST_SUCCESS: 
             return {
                 ...initialState,
                 loading: false,
                 data: action.data,
             }
-        case userConstants.LOGIN_FAILURE:
+        case companyConstants.LIST_FAILURE:
             return {
                 ...state,
                 loading: false,

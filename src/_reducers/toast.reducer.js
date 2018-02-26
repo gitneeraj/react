@@ -1,6 +1,11 @@
 import { toastConstants } from '../_constants';
 
-export function toast(state = {}, action) {
+const initialState = {
+    type: toastConstants.CLEAR,
+    message: null
+};
+
+export function toast(state = initialState, action) {
   switch (action.type) {
     case toastConstants.SUCCESS:
       return {
@@ -15,6 +20,6 @@ export function toast(state = {}, action) {
     case toastConstants.CLEAR:
       return {};
     default:
-      return state
+      return initialState
   }
 }

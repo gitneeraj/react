@@ -32,7 +32,8 @@ const Message = ({ type, content }) => {
 
 class Toaster extends Component {
     componentWillReceiveProps(nextProps) {
-        if (nextProps.toast.message && nextProps.toast.type) {     
+        if (nextProps.toast.message && nextProps.toast.type) { 
+            toast.dismiss();    
             switch (nextProps.toast.type) {
                 case toastConstants.SUCCESS:
                     toast.success(<Message content={nextProps.toast.message} type="success" />);
