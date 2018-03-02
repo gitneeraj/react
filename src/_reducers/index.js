@@ -3,9 +3,10 @@ import { reducer as formReducer } from 'redux-form'
 import { toast } from "../_reducers/toast.reducer";
 import { login } from "../_reducers/login.reducer";
 import { company } from "../_reducers/company.reducer";
+import { Form } from "../_reducers/form.reducer";
 
 export const rootReducers = combineReducers({
-    form: formReducer,
+    form: formReducer.plugin(Form),
     toast,
     login,
     company
