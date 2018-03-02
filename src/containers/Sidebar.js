@@ -17,7 +17,7 @@ class Sidebar extends Component {
                 </div>
                 <ul className="sidebar-menu" data-widget="tree">
                     <li className="header">MAIN NAVIGATION</li>
-                    <li className="treeview menu-open">
+                    <li className="treeview">
                         <NavLink to="/" exact activeClassName="active">
                             <i className="fa fa-dashboard"></i> <span>Dashboard</span>
                         </NavLink>

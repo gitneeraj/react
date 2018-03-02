@@ -13,3 +13,10 @@ body {
 .fa {
   font-size: 14px;
 }
+td{
+    vertical-align: middle!important;
+}
+.btn.btn-flat {
+    margin-right: 3px!important;
+    padding: 3px 8px!important;
+}

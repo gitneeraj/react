@@ -56,10 +56,10 @@ function add(company){
     function failure(error) { return { type: companyConstants.ADD_FAILURE, error } }
 }
 
-function update(id){
+function update(company, id){
     return dispatch => {
         dispatch(request());
-        companyService.update(id)
+        companyService.update(company, id)
             .then(
                 response => {
                     if(response.status === 'fail'){
@@ -67,6 +67,7 @@ function update(id){
                         dispatch(toastActions.error(response.message));
                     }else{
                         dispatch(success(response));
+                        dispatch(toastActions.success(response.message));
                         dispatch(getAll());
                     }
                 },

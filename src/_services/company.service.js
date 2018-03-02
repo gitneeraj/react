@@ -29,12 +29,12 @@ function add(company) {
 
 function update(company, id) {
     const requestOptions = {
-        method: 'GET',
+        method: 'PUT',
         headers: authHeader(),
         body: JSON.stringify(company)
     };
 
-    return fetch(urlConstants.getBaseurl() + urlConstants.UPDATE_COMPANY_URL, requestOptions).then(handleResponse);
+    return fetch(urlConstants.getBaseurl() + urlConstants.UPDATE_COMPANY_URL + id, requestOptions).then(handleResponse);
 }
 
 function view(id) {
@@ -43,7 +43,7 @@ function view(id) {
         headers: authHeader()
     };
 
-    return fetch(urlConstants.getBaseurl() + urlConstants.GET_COMPANY_URL, requestOptions).then(handleResponse);
+    return fetch(urlConstants.getBaseurl() + urlConstants.GET_COMPANY_URL + id, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
