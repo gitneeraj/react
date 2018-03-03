@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import Pagination from "react-js-pagination";
 
 import { companyActions } from "../../_actions";
 import { formActions } from "../../_actions";
@@ -33,12 +32,10 @@ class Company extends Component {
         super(props, context);
         this.state = {
             edit: false,
-            activePage: 1
         }
         this.handleEdit = this.handleEdit.bind(this);
         this.resetForm = this.resetForm.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.handlePageChange = this.handlePageChange.bind(this);
     }
 
     componentWillMount() {
@@ -81,11 +78,6 @@ class Company extends Component {
         return value;
     }
 
-    handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
-        this.setState({ activePage: pageNumber });
-    }
-
     render() {
         const { companies, view, handleSubmit } = this.props;
 
@@ -98,12 +90,6 @@ class Company extends Component {
                     <div className="col-lg-12">
                         <div className="box">
                             <div className="box-body">
-                                <Pagination
-                                    activePage={this.state.activePage}
-                                    totalItemsCount={companies.data.length}
-                                    onChange={this.handlePageChange}
-                                    itemsCountPerPage={1}
-                                />
 
                                 <table className="table table-hover table-striped">
                                     <thead>
@@ -135,12 +121,6 @@ class Company extends Component {
                                     </tbody>
                                 </table>
 
-                                <Pagination
-                                    activePage={this.state.activePage}
-                                    totalItemsCount={companies.data.length}
-                                    onChange={this.handlePageChange}
-                                    itemsCountPerPage={1}
-                                />
                             </div>
                         </div>
                     </div>
