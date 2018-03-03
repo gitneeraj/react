@@ -30,7 +30,12 @@ class Company extends Component {
 
     constructor(props, context) {
         super(props, context);
+        this.state = {
+            edit: false
+        }
         this.handleEdit = this.handleEdit.bind(this);
+        this.resetForm = this.resetForm.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentWillMount() {
@@ -40,17 +45,32 @@ class Company extends Component {
 
     handleEdit(id) {
         const { dispatch } = this.props;
+        this.setState({
+            edit: true
+        });
         dispatch(companyActions.view(id));
     }
 
     onSubmit(values, dispatch) {
-        dispatch(companyActions.update(values, values.id));        
-        // this.resetForm(dispatch);
+        if(this.state.edit)
+            dispatch(companyActions.update(values, values.id));
+        else
+            dispatch(companyActions.add(values));
+
+        dispatch(formActions.reset());
+        document.getElementById("editCompany").click();
+        this.setState({
+            edit: false
+        });
     }
     
-    // resetForm(dispatch){
-    //     dispatch(formActions.reset());
-    // }
+    resetForm(){
+        const { dispatch } = this.props;
+        this.setState({
+            edit: false
+        });
+        dispatch(formActions.reset());
+    }
 
     normalizeBoolean(value) {
         if (value === "true") return true;

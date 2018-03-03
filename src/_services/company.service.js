@@ -19,11 +19,12 @@ function getAll() {
 
 function add(company) {
     const requestOptions = {
-        method: 'GET',
+        method: 'POST',
         headers: authHeader(),
         body: JSON.stringify(company)
     };
 
+    console.log(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_URL, requestOptions)
     return fetch(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_URL, requestOptions).then(handleResponse);
 }
 

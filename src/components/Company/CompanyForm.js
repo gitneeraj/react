@@ -3,8 +3,8 @@ import { Field } from 'redux-form';
 
 import renderInput from '../FormElements/renderInput';
 
-const CompanyForm = ({handleSubmit, onSubmit, view, normalizeBoolean}) => {
-    
+const CompanyForm = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}) => {
+
     return (
         <div id="editCompany" className="modal fade" role="dialog">
             <div className="modal-dialog">
@@ -12,7 +12,7 @@ const CompanyForm = ({handleSubmit, onSubmit, view, normalizeBoolean}) => {
                 <div className="modal-content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="modal-header">
-                        <button type="button" className="close" data-dismiss="modal">&times;</button>
+                        <button type="button" className="close" data-dismiss="modal" onClick={resetForm}>&times;</button>
                         <h4 className="modal-title">Edit Company - {view.data && view.data.company_name }</h4>
                     </div>
                     <div className="modal-body">
@@ -47,7 +47,7 @@ const CompanyForm = ({handleSubmit, onSubmit, view, normalizeBoolean}) => {
                     </div>
                     <div className="modal-footer">
                         <button type="submit" className="btn btn-primary">Submit</button>
-                        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-default" data-dismiss="modal" onClick={resetForm}>Close</button>
                     </div>
                     </form>
                 </div>
