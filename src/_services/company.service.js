@@ -1,5 +1,6 @@
 import { authHeader } from '../_helpers';
 import { urlConstants } from '../_constants';
+import { responseService } from './response.service';
 
 export const companyService = {
     getAll,
@@ -14,7 +15,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch(urlConstants.getBaseurl() + urlConstants.COMPANIES_LIST_URL, requestOptions).then(handleResponse);
+    return fetch(urlConstants.getBaseurl() + urlConstants.COMPANIES_LIST_URL, requestOptions).then(responseService.handle);
 }
 
 function add(company) {
@@ -25,7 +26,7 @@ function add(company) {
     };
 
     console.log(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_URL, requestOptions)
-    return fetch(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_URL, requestOptions).then(handleResponse);
+    return fetch(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_URL, requestOptions).then(responseService.handle);
 }
 
 function update(company, id) {
@@ -35,7 +36,7 @@ function update(company, id) {
         body: JSON.stringify(company)
     };
 
-    return fetch(urlConstants.getBaseurl() + urlConstants.UPDATE_COMPANY_URL + id, requestOptions).then(handleResponse);
+    return fetch(urlConstants.getBaseurl() + urlConstants.UPDATE_COMPANY_URL + id, requestOptions).then(responseService.handle);
 }
 
 function view(id) {
@@ -44,13 +45,14 @@ function view(id) {
         headers: authHeader()
     };
 
-    return fetch(urlConstants.getBaseurl() + urlConstants.GET_COMPANY_URL + id, requestOptions).then(handleResponse);
+    return fetch(urlConstants.getBaseurl() + urlConstants.GET_COMPANY_URL + id, requestOptions).then(responseService.handle);
 }
 
-function handleResponse(response) {
-    if (!response.ok) { 
-        return Promise.reject(response.statusText);
-    }
+// function handleResponse(response) {
+//     if (!response.ok) { 
+//         window.location = "/login";
+//         return Promise.reject(response.statusText);
+//     }
 
-    return response.json();
-}
+//     return response.json();
+// }
