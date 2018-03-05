@@ -30,12 +30,14 @@ class Company extends Component {
 
     constructor(props, context) {
         super(props, context);
+        // Set Edit flag
         this.state = {
             edit: false,
         }
         this.handleEdit = this.handleEdit.bind(this);
         this.resetForm = this.resetForm.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.handleKeyup = this.handleKeyup.bind(this);
     }
 
     componentWillMount() {
@@ -45,6 +47,7 @@ class Company extends Component {
 
     handleEdit(id) {
         const { dispatch } = this.props;
+        // Reset Edit flag
         this.setState({
             edit: true
         });
@@ -55,10 +58,13 @@ class Company extends Component {
         if (this.state.edit)
             dispatch(companyActions.update(values, values.id));
         else
-            dispatch(companyActions.add(values));
+            dispatch(companyActions.add(values));                    
 
+        // Reset Form
         dispatch(formActions.reset());
-        document.getElementById("editCompany").click();
+        // Close Form
+        document.getElementById("close-modal").click();
+        // Reset Edit flag
         this.setState({
             edit: false
         });
@@ -66,9 +72,11 @@ class Company extends Component {
 
     resetForm() {
         const { dispatch } = this.props;
+        // Reset Edit flag
         this.setState({
             edit: false
         });
+        // Reset Form
         dispatch(formActions.reset());
     }
 
@@ -78,12 +86,19 @@ class Company extends Component {
         return value;
     }
 
+    handleKeyup(event){
+        const { dispatch } = this.props;
+        dispatch(companyActions.search({search: event.target.value}));  
+    }
+
     render() {
         const { companies, view, handleSubmit } = this.props;
 
         return (
             <div className="company">
-                <CompanyFilters />
+                <CompanyFilters
+                    handleKeyup={this.handleKeyup}
+                 />
                 <CompanyAddButton />
 
                 <div className="row">
@@ -110,6 +125,16 @@ class Company extends Component {
                                                     <span>
                                                         <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i> Loading...
                                                         </span>
+                                                </td>
+                                            </tr>
+                                        }
+                                        {
+                                            !companies.loading && !companies.data.length &&
+                                            <tr>
+                                                <td colSpan="100" align="center">
+                                                    <span>
+                                                        No Records Found.
+                                                    </span>
                                                 </td>
                                             </tr>
                                         }

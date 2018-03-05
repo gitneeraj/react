@@ -6,7 +6,8 @@ export const companyActions = {
     getAll,
     add,
     update,
-    view
+    view,
+    search
 };
 
 function getAll(){
@@ -23,6 +24,7 @@ function getAll(){
                     }
                 },
                 error => {
+                    dispatch(toastActions.error(error));
                     dispatch(failure(error));
                 }
             );
@@ -47,6 +49,7 @@ function add(company){
                     }
                 },
                 error => {
+                    dispatch(toastActions.error(error));
                     dispatch(failure(error));
                 }
             );
@@ -72,6 +75,7 @@ function update(company, id){
                     }
                 },
                 error => {
+                    dispatch(toastActions.error(error));
                     dispatch(failure(error));
                 }
             );
@@ -95,6 +99,7 @@ function view(id){
                     }
                 },
                 error => {
+                    dispatch(toastActions.error(error));
                     dispatch(failure(error));
                 }
             );
@@ -102,4 +107,28 @@ function view(id){
     function request() { return { type: companyConstants.VIEW_REQUEST } }
     function success(data) { return { type: companyConstants.VIEW_SUCCESS, data } }
     function failure(error) { return { type: companyConstants.VIEW_FAILURE, error } }
+}
+
+function search(keyword){
+    return dispatch => {
+        dispatch(request());
+        companyService.search(keyword)
+            .then(
+                response => {
+                    if(response.status === 'fail'){
+                        dispatch(failure(response));
+                        dispatch(toastActions.error(response.message));
+                    }else{
+                        dispatch(success(response));
+                    }
+                },
+                error => {
+                    dispatch(toastActions.error(error));
+                    dispatch(failure(error));
+                }
+            );
+    }
+    function request() { return { type: companyConstants.SEARCH_REQUEST } }
+    function success(data) { return { type: companyConstants.SEARCH_SUCCESS, data } }
+    function failure(error) { return { type: companyConstants.SEARCH_FAILURE, error } }
 }

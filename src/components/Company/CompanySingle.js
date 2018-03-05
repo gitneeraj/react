@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CompanySingle = ({companies, loading, handleEdit}) => {
 
@@ -10,7 +11,12 @@ const CompanySingle = ({companies, loading, handleEdit}) => {
             <td>{(company.active) ? 'Active' : 'Inactive'}</td>
             <td>{company.created_at}</td>
             <td>
-                <button className="btn bg-maroon btn-flat"><i className="fa fa-users"></i> Users</button>
+                {
+                    (company.active)?
+                    <Link to={`/company/${company.id}/users`} className="btn bg-maroon btn-flat"><i className="fa fa-users"></i> Users</Link>
+                    :
+                    <button className="btn bg-maroon btn-flat" disabled><i className="fa fa-users"></i> Users</button>
+                }                
                 <button className="btn bg-purple btn-flat"><i className="fa fa-briefcase"></i> Manage Jobs</button>
                 <button data-toggle="modal" data-target="#editCompany" disabled={loading} className="btn bg-orange btn-flat" onClick={() => handleEdit(company.id)}>
                     {(loading) ?

@@ -11,8 +11,9 @@ const CompanyForm = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}
 
                 <div className="modal-content">
                     <form onSubmit={handleSubmit(onSubmit)}>
+                    <Field name="status" type="hidden" component="input" />
                     <div className="modal-header">
-                        <button type="button" className="close" data-dismiss="modal" onClick={resetForm}>&times;</button>
+                        <button type="button" id="close-modal" className="close" data-dismiss="modal" onClick={resetForm}>&times;</button>
                         <h4 className="modal-title">Edit Company - {view.data && view.data.company_name }</h4>
                     </div>
                     <div className="modal-body">
@@ -37,7 +38,7 @@ const CompanyForm = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}
                             <div className="radio">
                                 <label className="form-label">
                                     <Field name="active" component="input" type="radio" value={true} normalize={normalizeBoolean} /> Yes
-                                </label>
+                                </label>{' '}
                                 <label className="form-label">
                                     <Field name="active" component="input" type="radio" value={false} normalize={normalizeBoolean} /> No
                                 </label>

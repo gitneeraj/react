@@ -4,7 +4,8 @@ export const responseService = {
 
 function handle(response){
     if (!response.ok) {
-        window.location = "/login";
+        if(response.status === 401) window.location = "/login";
+        
         return Promise.reject(response.statusText);
     }
 

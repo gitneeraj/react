@@ -6,7 +6,8 @@ export const companyService = {
     getAll,
     add,
     update,
-    view
+    view,
+    search
 };
 
 function getAll() {
@@ -25,7 +26,6 @@ function add(company) {
         body: JSON.stringify(company)
     };
 
-    console.log(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_URL, requestOptions)
     return fetch(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_URL, requestOptions).then(responseService.handle);
 }
 
@@ -48,11 +48,12 @@ function view(id) {
     return fetch(urlConstants.getBaseurl() + urlConstants.GET_COMPANY_URL + id, requestOptions).then(responseService.handle);
 }
 
-// function handleResponse(response) {
-//     if (!response.ok) { 
-//         window.location = "/login";
-//         return Promise.reject(response.statusText);
-//     }
+function search(keyword) {
+    const requestOptions = {
+        method: 'POST',
+        headers: authHeader(),
+        body: JSON.stringify(keyword)
+    };
 
-//     return response.json();
-// }
+    return fetch(urlConstants.getBaseurl() + urlConstants.COMPANIES_LIST_URL, requestOptions).then(responseService.handle);
+}
