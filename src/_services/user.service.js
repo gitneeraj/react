@@ -1,9 +1,15 @@
-// import { authHeader } from '../_helpers';
+import { authHeader } from '../_helpers';
 import { urlConstants } from '../_constants';
+import { responseService } from './response.service';
 
 export const userService = {
     login,
-    logout,    
+    logout,
+    getAll,
+    add,
+    update,
+    view,
+    search
 };
 
 function login({email, password}) {
@@ -35,4 +41,52 @@ function login({email, password}) {
 function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('authenticated');
+}
+
+function getAll(companyId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(urlConstants.getBaseurl() + urlConstants.COMPANIES_USERS_LIST_URL + companyId, requestOptions).then(responseService.handle);
+}
+
+function add(user) {
+    const requestOptions = {
+        method: 'POST',
+        headers: authHeader(),
+        body: JSON.stringify(user)
+    };
+
+    return fetch(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_USERS_URL, requestOptions).then(responseService.handle);
+}
+
+function update(user, id) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: authHeader(),
+        body: JSON.stringify(user)
+    };
+    console.log(urlConstants.getBaseurl() + urlConstants.UPDATE_COMPANY_USERS_URL + id, requestOptions)
+    return fetch(urlConstants.getBaseurl() + urlConstants.UPDATE_COMPANY_USERS_URL + id, requestOptions).then(responseService.handle);
+}
+
+function view(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(urlConstants.getBaseurl() + urlConstants.GET_COMPANY_USERS_URL + id, requestOptions).then(responseService.handle);
+}
+
+function search(keyword) {
+    const requestOptions = {
+        method: 'POST',
+        headers: authHeader(),
+        body: JSON.stringify(keyword)
+    };
+
+    return fetch(urlConstants.getBaseurl() + urlConstants.COMPANIES_USERS_LIST_URL, requestOptions).then(responseService.handle);
 }

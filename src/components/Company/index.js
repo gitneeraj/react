@@ -4,27 +4,11 @@ import { reduxForm } from 'redux-form';
 
 import { companyActions } from "../../_actions";
 import { formActions } from "../../_actions";
+import { validateCompanyForm } from '../../_helpers';
 import CompanyFilters from './CompanyFilters';
 import CompanyAddButton from './CompanyAddButton';
 import CompanySingle from './CompanySingle';
 import CompanyForm from './CompanyForm';
-
-const validate = values => {
-    const errors = {}
-    if (!values.company_name) {
-        errors.company_name = 'Required'
-    }
-
-    if (!values.company_code) {
-        errors.company_code = 'Required'
-    }
-
-    if (!values.website) {
-        errors.company_code = 'Required'
-    }
-
-    return errors
-}
 
 class Company extends Component {
 
@@ -165,7 +149,7 @@ class Company extends Component {
 
 let CompanyPageForm = reduxForm({
     form: 'companyForm',
-    validate,
+    validate: validateCompanyForm,
     enableReinitialize: true
 })(Company)
 
