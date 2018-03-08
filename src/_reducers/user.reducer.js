@@ -39,6 +39,7 @@ export const user = (state = initialState, action) => {
             return {
                 ...state,
                 list: {
+                    data: [],
                     loading: false,
                     error: action.error
                 }
@@ -118,6 +119,7 @@ export const user = (state = initialState, action) => {
             return {
                 ...state,
                 list: {
+                    data: [],
                     loading: false,
                     error: action.error
                 }

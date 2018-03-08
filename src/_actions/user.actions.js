@@ -29,7 +29,7 @@ function login(data) {
                     }                    
                 },
                 error => {
-                    dispatch(failure(error));
+                    dispatch(failure(error.toString()));
                 }
             );
     };
@@ -61,8 +61,8 @@ function getAll(companyId){
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }
@@ -71,10 +71,10 @@ function getAll(companyId){
     function failure(error) { return { type: userConstants.LIST_FAILURE, error } }
 }
 
-function add(user){
+function add(user, companyId){
     return dispatch => {
         dispatch(request());
-        userService.add(user)
+        userService.add(user, companyId)
             .then(
                 response => {
                     if(response.status === 'fail'){
@@ -82,12 +82,13 @@ function add(user){
                         dispatch(toastActions.error(response.message));
                     }else{
                         dispatch(success(response));
-                        dispatch(getAll());
+                        dispatch(toastActions.success(response.message));
+                        dispatch(getAll(companyId));
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }
@@ -108,12 +109,12 @@ function update(user, id){
                     }else{
                         dispatch(success(response));
                         dispatch(toastActions.success(response.message));
-                        dispatch(getAll());
+                        dispatch(getAll(user.company_id));
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }
@@ -136,8 +137,8 @@ function view(id){
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }
@@ -146,10 +147,10 @@ function view(id){
     function failure(error) { return { type: userConstants.VIEW_FAILURE, error } }
 }
 
-function search(keyword){
+function search(keyword, companyId){
     return dispatch => {
         dispatch(request());
-        userService.search(keyword)
+        userService.search(keyword, companyId)
             .then(
                 response => {
                     if(response.status === 'fail'){
@@ -160,8 +161,8 @@ function search(keyword){
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }

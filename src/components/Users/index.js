@@ -39,10 +39,12 @@ class Users extends Component{
     }
 
     onSubmit(values, dispatch) {
+        const {match: { params } } = this.props;
+
         if (this.state.edit)
             dispatch(userActions.update(values, values.id));
         else
-            dispatch(userActions.add(values));                    
+            dispatch(userActions.add(values, params.companyId));                    
 
         // Reset Form
         dispatch(formActions.reset());
@@ -71,8 +73,8 @@ class Users extends Component{
     }
 
     handleKeyup(event){
-        const { dispatch } = this.props;
-        dispatch(userActions.search({search: event.target.value}));  
+        const { dispatch, match: { params } } = this.props;
+        dispatch(userActions.search({search: event.target.value}, params.companyId));  
     }
 
     render(){

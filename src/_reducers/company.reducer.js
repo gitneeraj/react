@@ -39,6 +39,7 @@ export const company = (state = initialState, action) => {
             return {
                 ...state,
                 list: {
+                    data: [],
                     loading: false,
                     error: action.error
                 }

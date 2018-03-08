@@ -24,8 +24,8 @@ function getAll(){
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }
@@ -49,8 +49,8 @@ function add(company){
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }
@@ -75,8 +75,8 @@ function update(company, id){
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }
@@ -99,8 +99,8 @@ function view(id){
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }
@@ -123,8 +123,8 @@ function search(keyword){
                     }
                 },
                 error => {
-                    dispatch(toastActions.error(error));
-                    dispatch(failure(error));
+                    dispatch(toastActions.error(error.toString()));
+                    dispatch(failure(error.toString()));
                 }
             );
     }

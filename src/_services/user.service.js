@@ -52,13 +52,16 @@ function getAll(companyId) {
     return fetch(urlConstants.getBaseurl() + urlConstants.COMPANIES_USERS_LIST_URL + companyId, requestOptions).then(responseService.handle);
 }
 
-function add(user) {
+function add(user, companyId) {
+    user.company_id = companyId;
+    delete user.search;
     const requestOptions = {
         method: 'POST',
         headers: authHeader(),
         body: JSON.stringify(user)
     };
 
+    console.log(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_USERS_URL, requestOptions);
     return fetch(urlConstants.getBaseurl() + urlConstants.ADD_COMPANY_USERS_URL, requestOptions).then(responseService.handle);
 }
 
@@ -68,7 +71,7 @@ function update(user, id) {
         headers: authHeader(),
         body: JSON.stringify(user)
     };
-    console.log(urlConstants.getBaseurl() + urlConstants.UPDATE_COMPANY_USERS_URL + id, requestOptions)
+
     return fetch(urlConstants.getBaseurl() + urlConstants.UPDATE_COMPANY_USERS_URL + id, requestOptions).then(responseService.handle);
 }
 
@@ -81,12 +84,12 @@ function view(id) {
     return fetch(urlConstants.getBaseurl() + urlConstants.GET_COMPANY_USERS_URL + id, requestOptions).then(responseService.handle);
 }
 
-function search(keyword) {
+function search(keyword, companyId) {
     const requestOptions = {
         method: 'POST',
         headers: authHeader(),
         body: JSON.stringify(keyword)
     };
 
-    return fetch(urlConstants.getBaseurl() + urlConstants.COMPANIES_USERS_LIST_URL, requestOptions).then(responseService.handle);
+    return fetch(urlConstants.getBaseurl() + urlConstants.COMPANIES_USERS_LIST_URL + companyId, requestOptions).then(responseService.handle);
 }

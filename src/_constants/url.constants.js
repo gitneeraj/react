@@ -1,7 +1,7 @@
 export const urlConstants = {
     getBaseurl: () => {
         if (window.location.hostname === "localhost") {
-            return 'http://192.168.9.217/screenscrapmanwebapp/development/ssmapi/public/';
+            return 'http://192.168.9.217/screenscrapmanwebapp/production/ssmapi/public/';
         }else{
             return 'http://192.168.9.217/screenscrapmanwebapp/production/ssmapi/public/';
         }
