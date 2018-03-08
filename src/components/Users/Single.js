@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 
-const UserSingle = ({users, loading, handleEdit}) => {
+export const Single = ({users, loading, handleEdit}) => {
 
     return (users).map((user, index) => {
         return (<tr key={index}>
@@ -24,5 +24,3 @@ const UserSingle = ({users, loading, handleEdit}) => {
         </tr>)
     });
 }
-
-export default UserSingle;

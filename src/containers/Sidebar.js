@@ -23,7 +23,7 @@ class Sidebar extends Component {
                         </NavLink>
                     </li>
                     <li className="treeview">
-                        <NavLink to="/jobs" exact activeClassName="active">
+                        <NavLink to="/job-source" exact activeClassName="active">
                             <i className="fa fa-briefcase"></i> <span>Job Source</span>
                         </NavLink>
                     </li>

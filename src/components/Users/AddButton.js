@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserAddButton = () => {
+export const AddButton = () => {
     return (
         <div className="row">
             <div className="col-md-12">
@@ -9,5 +9,3 @@ const UserAddButton = () => {
         </div>
     )
 }
-
-export default UserAddButton;

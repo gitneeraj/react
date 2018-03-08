@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import renderInput from '../FormElements/renderInput';
 
-const CompanyFilters = ({ handleKeyup }) => {
+export const Filters = ({ handleKeyup }) => {
     return (
         <div className="row">
             <div className="col-md-12">
@@ -15,7 +15,7 @@ const CompanyFilters = ({ handleKeyup }) => {
                     <div className="box-body">
                         <div className="row">
                             <div className="col-sm-12 col-lg-4">
-                                <Field name="search" component={renderInput} type="text" label="Company" onChange={handleKeyup} />
+                                <Field name="search" component={renderInput} type="text" label="Users" onChange={handleKeyup} />
                             </div>
                             <button className="btn btn-success" style={{marginTop: "25px"}}><i className="fa fa-search"></i> Search</button>
                         </div>
@@ -25,5 +25,3 @@ const CompanyFilters = ({ handleKeyup }) => {
         </div>
     );
 }
-
-export default CompanyFilters;

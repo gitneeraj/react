@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Home, Jobs, Source, Users, Company, NotFound } from '../components';
+import { Home, Source, NotFound } from '../components';
+import { JobSource, Company, Users } from '../containers';
+
 import Sidebar from '../containers/Sidebar';
 import Topnav from '../containers/Topnav';
 import Footer from '../containers/Footer';
-// import { Sidebar } from './';
 
 class Dashboard extends Component {
     render() {
@@ -18,7 +19,7 @@ class Dashboard extends Component {
                     <section className="content">
                         <Switch>
                             <Route path={`${this.props.match.url}/`} exact component={Home} />
-                            <Route path={`${this.props.match.url}jobs`} component={Jobs} />
+                            <Route path={`${this.props.match.url}job-source`} component={JobSource} />
                             <Route path={`${this.props.match.url}source`} component={Source} />
                             <Route path={`${this.props.match.url}companies`} component={Company} />
                             <Route path={`${this.props.match.url}company/:companyId/users`} component={Users} />

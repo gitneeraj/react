@@ -4,7 +4,7 @@ import { Field } from 'redux-form';
 import renderInput from '../FormElements/renderInput';
 import renderSelect from '../FormElements/renderSelect';
 
-const CompanyForm = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}) => {
+export const Form = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}) => {
 
     return (
         <div id="editUser" className="modal fade" role="dialog">
@@ -67,5 +67,3 @@ const CompanyForm = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}
         </div>
     );
 }
-
-export default CompanyForm;

@@ -1,6 +1,6 @@
 import { authHeader } from '../_helpers';
 import { urlConstants } from '../_constants';
-import { responseService } from './response.service';
+import { responseService } from './';
 
 export const userService = {
     login,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CompanySingle = ({companies, loading, handleEdit}) => {
+export const Single = ({companies, loading, handleEdit}) => {
 
     return (companies).map((company, index) => {
         return (<tr key={index}>
@@ -29,5 +29,3 @@ const CompanySingle = ({companies, loading, handleEdit}) => {
         </tr>)
     });
 }
-
-export default CompanySingle;
