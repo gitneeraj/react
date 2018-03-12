@@ -19,29 +19,21 @@ export const Form = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}
                     <div className="modal-body">
                     <div className="row">
                         <div className="col-lg-6">
-                            <div className="form-group">                                
-                                <Field name="name" min="3" max="200" component={renderInput} type="text" isRequired="true" label="Name" />
-                            </div>
+                            <Field name="name" min="3" max="200" component={renderInput} type="text" isRequired="true" label="Name" />
                         </div>
                         <div className="col-lg-6">
-                            <div className="form-group">
-                                <Field name="email" component={renderInput} type="email" isRequired="true" label="Email" />
-                            </div>
+                            <Field name="email" component={renderInput} type="email" isRequired="true" label="Email" />
                         </div>
                         <div className="col-lg-6">
-                            <div className="form-group">
-                                <Field name="phone" component={renderInput} type="number" isRequired="true" label="Phone" />
-                            </div>
+                            <Field name="phone" component={renderInput} type="number" isRequired="true" label="Phone" />
                         </div>
                         <div className="col-lg-6">
-                            <div className="form-group">
-                                <Field name="role" component={renderSelect} label="Role" isRequired="true">
-                                    <option></option>
-                                    <option value="user">User</option>
-                                    <option value="developer">Developer</option>
-                                    <option value="admin">Admin</option>
-                                </Field>
-                            </div>
+                            <Field name="role" component={renderSelect} label="Role" isRequired="true">
+                                <option></option>
+                                <option value="user">User</option>
+                                <option value="developer">Developer</option>
+                                <option value="admin">Admin</option>
+                            </Field>
                         </div>                    
                         <div className="col-lg-6">
                             <label className="control-label supporting-label">Active?</label>

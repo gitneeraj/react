@@ -1,20 +1,3 @@
-export const validateCompanyForm = values => {
-    const errors = {}
-    if (!values.company_name) {
-        errors.company_name = 'Required'
-    }
-
-    if (!values.company_code) {
-        errors.company_code = 'Required'
-    }
-
-    if (!values.website) {
-        errors.website = 'Required'
-    }
-
-    return errors
-}
-
 export const validateUserForm = values => {
     const errors = {}
     if (!values.name) {
@@ -33,6 +16,40 @@ export const validateUserForm = values => {
 
     if (!values.role) {
         errors.role = 'Required'
+    }
+
+    return errors
+}
+
+export const validateCompanyForm = values => {
+    const errors = {}
+    if (!values.company_name) {
+        errors.company_name = 'Required'
+    }
+
+    if (!values.company_code) {
+        errors.company_code = 'Required'
+    }
+
+    if (!values.website) {
+        errors.website = 'Required'
+    }
+
+    return errors
+}
+
+export const validateJobSourceForm = values => {
+    const errors = {}
+    if (!values.name) {
+        errors.name = 'Required'
+    }
+
+    if (!values.weburl) {
+        errors.weburl = 'Required'
+    }
+
+    if (!values.website) {
+        errors.website = 'Required'
     }
 
     return errors

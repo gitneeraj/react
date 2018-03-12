@@ -3,8 +3,14 @@ import { Field } from 'redux-form';
 
 import renderInput from '../FormElements/renderInput';
 import renderSelect from '../FormElements/renderSelect';
+import renderDateRangePicker from '../FormElements/renderDateRangePicker';
 
-export const Filters = ({ handleKeyup }) => {
+export const Filters = ({ 
+    companies,    
+    handleKeyup, 
+    handleDatepickerEvent 
+}) => {
+
     return (
         <div className="row">
             <div className="col-md-12">
@@ -20,17 +26,24 @@ export const Filters = ({ handleKeyup }) => {
                             </div>
 
                             <div className="col-sm-12 col-lg-4">
-                                <Field name="daterange" component={renderInput} type="text" label="Select Date Range" />
+                                <Field name="daterangewrapper" component={renderDateRangePicker} handleDatepickerEvent={handleDatepickerEvent}>
+                                    <Field name="daterange" component={renderInput} type="text" label="Select Date Range" />
+                                </Field>
                             </div>
                             
                             <div className="col-sm-12 col-lg-4">
-                                <Field name="company" component={renderSelect} label="Select Company" isRequired="true">
-                                    <option></option>
+                                <Field name="company" component={renderSelect} label="Select Company">
+                                    <option value="">-- Select Company --</option>
+                                    {
+                                        (companies).map((company, index) => {
+                                            return <option key={index} value={company.id}>{company.company_name}</option>
+                                        })
+                                    }
                                 </Field>
                             </div>
 
                             <div className="col-sm-12 col-lg-12">
-                                <button className="btn btn-success pull-right" style={{marginTop: "25px"}}><i className="fa fa-search"></i> Search</button>
+                                <button className="btn btn-success pull-right"><i className="fa fa-search"></i> Search</button>
                             </div>
                         </div>
                     </div>

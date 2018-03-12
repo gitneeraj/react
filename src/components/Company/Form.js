@@ -19,19 +19,13 @@ export const Form = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}
                     <div className="modal-body">
                     <div className="row">
                         <div className="col-lg-6">
-                            <div className="form-group">                                
-                                <Field name="company_name" min="3" max="200" component={renderInput} type="text" isRequired="true" label="Company Name" />
-                            </div>
+                            <Field name="company_name" min="3" max="200" component={renderInput} type="text" isRequired="true" label="Company Name" />
                         </div>
                         <div className="col-lg-6">
-                            <div className="form-group">
-                                <Field name="company_code" min="3" max="200" component={renderInput} type="text" isRequired="true" label="Company Code" />
-                            </div>
+                            <Field name="company_code" min="3" max="200" component={renderInput} type="text" isRequired="true" label="Company Code" />
                         </div>
                         <div className="col-lg-6">
-                            <div className="form-group">
-                                <Field name="website" component={renderInput} type="url" isRequired="true" label="Company Website" />
-                            </div>
+                            <Field name="website" component={renderInput} type="url" isRequired="true" label="Company Website" />
                         </div>                    
                         <div className="col-lg-6">
                             <label className="control-label supporting-label">Active?</label>

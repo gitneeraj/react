@@ -7,7 +7,7 @@ const renderInput = ({
     isRequired,
     meta: { touched, error, warning }
   }) => (
-    <div>
+    <div className="form-group">
         { label &&
             <label className="control-label">{label}
                 {isRequired === "true" && <span className="text-danger">*</span>}
@@ -15,8 +15,8 @@ const renderInput = ({
         }
         <input {...input} placeholder={label} type={type} className="form-control" />
         {touched &&
-          ((error && <span>{error}</span>) ||
-            (warning && <span>{warning}</span>))}
+          ((error && <span className="alert alert-danger">{error}</span>) ||
+            (warning && <span className="alert alert-warn">{warning}</span>))}
     </div>
   )
 
