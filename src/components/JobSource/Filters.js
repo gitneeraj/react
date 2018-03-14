@@ -23,17 +23,37 @@ export const Filters = ({
                     <div className="box-body">
                         <div className="row">
                             <div className="col-sm-12 col-lg-4">
-                                <Field name="filters.search" component={renderInput} type="text" label="Search" onChange={handleKeyup} />
+                                <Field 
+                                    name="filters.search" 
+                                    component={renderInput} 
+                                    type="text" 
+                                    label="Search" 
+                                    onChange={handleKeyup} 
+                                />
                             </div>
 
                             <div className="col-sm-12 col-lg-4">
-                                <Field name="daterangewrapper" component={renderDateRangePicker} handleDatepickerEvent={handleDatepickerEvent}>
-                                    <Field name="filters.daterange" component={renderInput} type="text" label="Select Date Range" />
+                                <Field 
+                                    name="daterangewrapper" 
+                                    component={renderDateRangePicker} 
+                                    handleDatepickerEvent={handleDatepickerEvent}
+                                >
+                                    <Field 
+                                        name="filters.daterange" 
+                                        component={renderInput} 
+                                        type="text" 
+                                        label="Select Date Range" 
+                                    />
                                 </Field>
                             </div>
                             
                             <div className="col-sm-12 col-lg-4">
-                                <Field name="filters.company" component={renderSelect} label="Select Company" onChange={handleOnChange}>
+                                <Field 
+                                    name="filters.company" 
+                                    component={renderSelect} 
+                                    label="Select Company" 
+                                    onChange={handleOnChange}
+                                >
                                     <option value="0">-- Select Company --</option>
                                     {
                                         (companies).map((company, index) => {
