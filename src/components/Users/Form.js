@@ -1,8 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import renderInput from '../FormElements/renderInput';
-import renderSelect from '../FormElements/renderSelect';
+import { renderInput, renderSelect } from '../FormElements';
 
 export const Form = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}) => {
 

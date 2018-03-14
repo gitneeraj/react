@@ -1,6 +1,6 @@
 import React from 'react';
 
-const renderInput = ({
+export const renderInput = ({
     input,
     label,
     type,
@@ -18,6 +18,4 @@ const renderInput = ({
           ((error && <span className="alert alert-danger">{error}</span>) ||
             (warning && <span className="alert alert-warn">{warning}</span>))}
     </div>
-  )
-
-  export default renderInput;
+  );

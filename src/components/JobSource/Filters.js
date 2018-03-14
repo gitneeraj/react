@@ -1,9 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import renderInput from '../FormElements/renderInput';
-import renderSelect from '../FormElements/renderSelect';
-import renderDateRangePicker from '../FormElements/renderDateRangePicker';
+import { renderInput, renderSelect, renderDateRangePicker } from '../FormElements';
 
 export const Filters = ({ 
     getAllJobSources,

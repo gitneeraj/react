@@ -1,6 +1,6 @@
 import React from 'react';
 
-const renderTextArea = ({
+export const renderTextArea = ({
     input,
     label,
     isRequired,
@@ -17,6 +17,4 @@ const renderTextArea = ({
           ((error && <span className="alert alert-danger">{error}</span>) ||
             (warning && <span className="alert alert-warn">{warning}</span>))}
     </div>
-  )
-
-  export default renderTextArea;
+  );

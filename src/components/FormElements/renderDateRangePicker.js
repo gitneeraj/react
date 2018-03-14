@@ -6,7 +6,7 @@ import * as moment from 'moment';
 const startDate = moment().subtract(30, 'days');
 const endDate = moment();
 
-const renderDateRangePicker = ({
+export const renderDateRangePicker = ({
     handleDatepickerEvent,
     children
   }) => (
@@ -15,6 +15,4 @@ const renderDateRangePicker = ({
             {children}
         </DateRangePicker>
     </div>
-  )
-
-  export default renderDateRangePicker;
+  );

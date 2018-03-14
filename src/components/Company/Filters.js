@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import renderInput from '../FormElements/renderInput';
+import { renderInput } from '../FormElements';
 
 export const Filters = ({ handleKeyup }) => {
     return (

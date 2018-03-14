@@ -1,6 +1,6 @@
 import React from 'react';
 
-const renderSelect = ({
+export const renderSelect = ({
     input,
     label,
     isRequired,
@@ -21,5 +21,3 @@ const renderSelect = ({
             (warning && <span className="alert alert-warn">{warning}</span>))}
     </div>
 );
-
-export default renderSelect;
