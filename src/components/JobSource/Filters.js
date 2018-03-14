@@ -6,9 +6,12 @@ import renderSelect from '../FormElements/renderSelect';
 import renderDateRangePicker from '../FormElements/renderDateRangePicker';
 
 export const Filters = ({ 
+    getAllJobSources,
     companies,    
-    handleKeyup, 
-    handleDatepickerEvent 
+    handleKeyup,
+    handleOnChange,
+    handleDatepickerEvent,
+    reset
 }) => {
 
     return (
@@ -22,18 +25,18 @@ export const Filters = ({
                     <div className="box-body">
                         <div className="row">
                             <div className="col-sm-12 col-lg-4">
-                                <Field name="search" component={renderInput} type="text" label="Search" onChange={handleKeyup} />
+                                <Field name="filters.search" component={renderInput} type="text" label="Search" onChange={handleKeyup} />
                             </div>
 
                             <div className="col-sm-12 col-lg-4">
                                 <Field name="daterangewrapper" component={renderDateRangePicker} handleDatepickerEvent={handleDatepickerEvent}>
-                                    <Field name="daterange" component={renderInput} type="text" label="Select Date Range" />
+                                    <Field name="filters.daterange" component={renderInput} type="text" label="Select Date Range" />
                                 </Field>
                             </div>
                             
                             <div className="col-sm-12 col-lg-4">
-                                <Field name="company" component={renderSelect} label="Select Company">
-                                    <option value="">-- Select Company --</option>
+                                <Field name="filters.company" component={renderSelect} label="Select Company" onChange={handleOnChange}>
+                                    <option value="0">-- Select Company --</option>
                                     {
                                         (companies).map((company, index) => {
                                             return <option key={index} value={company.id}>{company.company_name}</option>
@@ -43,6 +46,7 @@ export const Filters = ({
                             </div>
 
                             <div className="col-sm-12 col-lg-12">
+                                <button className="btn btn-default pull-right" onClick={() => {reset();getAllJobSources();}}><i className="fa fa-reset"></i> Reset</button>
                                 <button className="btn btn-success pull-right"><i className="fa fa-search"></i> Search</button>
                             </div>
                         </div>

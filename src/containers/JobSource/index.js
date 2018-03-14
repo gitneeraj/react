@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, change } from 'redux-form';
+import { reduxForm, change, getFormValues } from 'redux-form';
 import * as moment from 'moment';
 
 import { companyActions, jobSourceActions, formActions } from "../../_actions";
@@ -14,25 +14,73 @@ class JobSource extends Component{
         // Set Edit flag
         this.state = {
             edit: false,
+            filters: {
+                startDate: null,
+                endDate: null,
+                search: '',
+                company: 0,
+            }
         }
+        this.getAllJobSources = this.getAllJobSources.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.resetForm = this.resetForm.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.handleKeyup = this.handleKeyup.bind(this);
+        this.handleOnChange = this.handleOnChange.bind(this);
         this.handleDatepickerEvent = this.handleDatepickerEvent.bind(this);
     }
 
     componentWillMount() {
         const { dispatch } = this.props;
-        dispatch(jobSourceActions.getAll());
+        this.getAllJobSources();
         dispatch(companyActions.getAll());
     }
 
-    handleKeyup(){}
+    getAllJobSources(){
+        const { dispatch } = this.props;
+        dispatch(jobSourceActions.getAll());
+    }
+
+    handleKeyup(event){
+        const { dispatch } = this.props;
+        this.setState(state => ({
+            ...state,
+            filters: {
+                ...state.filters,
+                search: event.target.value
+            }
+        }), () => {
+            dispatch(jobSourceActions.search(this.state.filters)); 
+        })
+        
+    }
+
+    handleOnChange(event){
+        const { dispatch } = this.props;
+        this.setState(state => ({
+            ...state,
+            filters: {
+                ...state.filters,
+                company: event.target.value
+            }
+        }), () => {
+            dispatch(jobSourceActions.search(this.state.filters));
+        })
+    }
 
     handleDatepickerEvent(event, picker){
-        const { changeDaterange } = this.props;
-        changeDaterange(moment(picker.startDate).format("DD-MM-YYYY") + ' to ' + moment(picker.endDate).format("DD-MM-YYYY"))
+        const { dispatch, updateField } = this.props;
+        updateField("filters.daterange", moment(picker.startDate).format("DD-MM-YYYY") + ' to ' + moment(picker.endDate).format("DD-MM-YYYY"));
+        this.setState(state => ({
+            ...state,
+            filters: {
+                ...state.filters,
+                startDate: moment(picker.startDate).format("YYYY-MM-DD HH:mm:ss"),
+                endDate: moment(picker.endDate).format("YYYY-MM-DD HH:mm:ss")
+            }
+        }), () => {
+            dispatch(jobSourceActions.search(this.state.filters));
+        })
     }
 
     handleEdit(id) {
@@ -77,18 +125,24 @@ class JobSource extends Component{
     }
     
     render(){
-        const { companies, jobSource, view, handleSubmit } = this.props;
+        const { companies, jobSource, view, handleSubmit, reset, login } = this.props;
 
         return (
             <div className="jobSource">
 
                 <Filters 
+                    getAllJobSources={this.getAllJobSources}
                     companies={companies.data}
                     handleKeyup={this.handleKeyup}
+                    handleOnChange={this.handleOnChange}
                     handleDatepickerEvent={this.handleDatepickerEvent}
+                    reset={reset}
                 />
 
-                <AddButton />
+                {
+                    login.user.role === 'user' && 
+                    <AddButton />
+                }                
 
                 <div className="row">
                     <div className="col-lg-12">
@@ -160,14 +214,16 @@ let JobSourcePageForm = reduxForm({
 })(JobSource)
 
 const mapStateToProps = (state) => ({
+    login: state.login.data,
     companies: state.company.list,
     jobSource: state.jobSource.list,
     view: state.jobSource.default,
     initialValues: state.jobSource.default,
+    fieldValues: getFormValues('jobSourceForm')(state),
 })
 
 const mapDispatchToProps = {
-    changeDaterange: date => change( "jobSourceForm", "daterange", date )
+    updateField: (field, data) => change( "jobSourceForm", field, data )
 }
 
 let connectedJobSourcePage = connect(mapStateToProps, mapDispatchToProps)(JobSourcePageForm);

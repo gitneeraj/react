@@ -109,10 +109,10 @@ function view(id){
     function failure(error) { return { type: jobSourceConstants.VIEW_FAILURE, error } }
 }
 
-function search(keyword){
+function search(filters){
     return dispatch => {
         dispatch(request());
-        jobSourceService.search(keyword)
+        jobSourceService.search(filters)
             .then(
                 response => {
                     if(response.status === 'fail'){

@@ -48,12 +48,15 @@ function view(id) {
     return fetch(urlConstants.getBaseurl() + urlConstants.GET_JOB_SOURCE_URL + id, requestOptions).then(responseService.handle);
 }
 
-function search(keyword) {
+function search(filters) {
+    let params = '';
+    if(filters.company && filters.company !== 0) params = '/' + filters.company;
+
     const requestOptions = {
         method: 'POST',
         headers: authHeader(),
-        body: JSON.stringify(keyword)
+        body: JSON.stringify(filters)
     };
-
-    return fetch(urlConstants.getBaseurl() + urlConstants.JOB_SOURCE_LIST_URL, requestOptions).then(responseService.handle);
+    
+    return fetch(urlConstants.getBaseurl() + urlConstants.JOB_SOURCE_LIST_URL + params, requestOptions).then(responseService.handle);
 }

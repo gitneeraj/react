@@ -4,8 +4,14 @@ import * as moment from 'moment';
 const initialState = {
     default: {
         status: 1,
-        search: '',
-        daterange: moment().subtract(30, 'days').format('DD-MM-YYYY') + ' to ' + moment().format('DD-MM-YYYY')
+        filters: {
+            startDate: null,
+            endDate: null,
+            search: '',
+            company: 0,
+            daterange: moment().subtract(30, 'days').format('DD-MM-YYYY') + ' to ' + moment().format('DD-MM-YYYY')
+        },
+        
     },
     list: {
         loading: false,
