@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 
 import { renderInput, renderSelect, renderDateRangePicker } from '../FormElements';
 
@@ -74,3 +75,12 @@ export const Filters = ({
         </div>
     );
 }
+
+Filters.propTypes = {
+    getAllJobSources: PropTypes.func.isRequired,
+    companies: PropTypes.array.isRequired,
+    handleKeyup: PropTypes.func.isRequired,
+    handleOnChange: PropTypes.func.isRequired,
+    handleDatepickerEvent: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired
+};

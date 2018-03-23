@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 
 import { renderInput } from '../FormElements';
 
@@ -25,3 +26,7 @@ export const Filters = ({ handleKeyup }) => {
         </div>
     );
 }
+
+Filters.propTypes = {
+    handleKeyup: PropTypes.func.isRequired
+};

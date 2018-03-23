@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const Single = ({companies, loading, handleEdit}) => {
 
@@ -29,3 +30,9 @@ export const Single = ({companies, loading, handleEdit}) => {
         </tr>)
     });
 }
+
+Single.propTypes = {
+    companies: PropTypes.array.isRequired,
+    loading: PropTypes.bool,
+    handleEdit: PropTypes.func.isRequired
+};

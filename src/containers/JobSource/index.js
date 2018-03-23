@@ -5,7 +5,7 @@ import * as moment from 'moment';
 
 import { companyActions, jobSourceActions, formActions } from "../../_actions";
 import { validateJobSourceForm } from '../../_helpers';
-import { Filters, AddButton, Single, Form } from '../../components/JobSource';
+import { Filters, AddButton, Single, Form, View } from '../../components/JobSource';
 
 class JobSource extends Component{
 
@@ -186,6 +186,7 @@ class JobSource extends Component{
                                             jobSources={jobSource.data}
                                             loading={view.loading}
                                             handleEdit={this.handleEdit}
+                                            login={login}
                                         />
                                     </tbody>
                                 </table>
@@ -202,6 +203,11 @@ class JobSource extends Component{
                     normalizeBoolean={this.normalizeBoolean}
                     resetForm={this.resetForm}
                 />
+
+                <View
+                    view={view}
+                    resetForm={this.resetForm}
+                 />
             </div>
         )
     }

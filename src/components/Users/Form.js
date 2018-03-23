@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 
 import { renderInput, renderSelect } from '../FormElements';
 
@@ -58,3 +59,11 @@ export const Form = ({handleSubmit, onSubmit, view, normalizeBoolean, resetForm}
         </div>
     );
 }
+
+Form.propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    view: PropTypes.object.isRequired,
+    normalizeBoolean: PropTypes.func.isRequired,
+    resetForm: PropTypes.func.isRequired
+};
